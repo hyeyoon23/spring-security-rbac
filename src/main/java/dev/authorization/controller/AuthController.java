@@ -1,11 +1,12 @@
 package dev.authorization.controller;
 
 import dev.authorization.service.AuthService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@RestController
+@Controller
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -16,27 +17,23 @@ public class AuthController {
     }
 
     // 회원가입
-    @PostMapping("/signup")
-    public String signup(@RequestBody Map<String, String> request) {
+    @PostMapping("/signin")
+    public String signup(@RequestParam String username,
+                         @RequestParam String password,
+                         @RequestParam String position) {
 
-        authService.signup(
-                request.get("username"),
-                request.get("password"),
-                request.get("position")
-        );
+        authService.signup(username, password, position);
 
-        return "회원가입 성공";
+        return "redirect:/mypage";
     }
 
     // 로그인
     @PostMapping("/login")
-    public String login(@RequestBody Map<String, String> request) {
+    public String login(@RequestParam String username,
+                        @RequestParam String password) {
 
-        authService.login(
-                request.get("username"),
-                request.get("password")
-        );
+        authService.login(username, password);
 
-        return "로그인 성공";
+        return "redirect:/mypage";
     }
 }

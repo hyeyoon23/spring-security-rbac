@@ -24,6 +24,6 @@ public class UserController {
         model.addAttribute("username", user.getUsername());
         model.addAttribute("position", user.getPosition());
 
-        return "mypage"; //mypage.html로
+        return "mypage"; // mypage.html로
     }
 }

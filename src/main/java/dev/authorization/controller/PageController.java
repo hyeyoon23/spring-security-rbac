@@ -20,9 +20,4 @@ public class PageController {
     public String login() {
         return "login";
     }
-
-    @GetMapping("/adminpage")
-    public String adminpage() {
-        return "adminpage";
-    }
 }

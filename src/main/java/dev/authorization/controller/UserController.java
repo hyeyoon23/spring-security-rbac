@@ -21,9 +21,8 @@ public class UserController {
 
         User user = userService.getMyData(username);
 
-        model.addAttribute("username", user.getUsername());
-        model.addAttribute("position", user.getPosition());
+        model.addAttribute("user", user);
 
-        return "mypage"; // mypage.html로
+        return "mypage";
     }
 }

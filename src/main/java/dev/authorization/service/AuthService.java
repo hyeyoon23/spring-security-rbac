@@ -35,7 +35,7 @@ public class AuthService {
 
         User user = new User(username, encodedPassword, position);
 
-        user.addAuthority(new Authority("ROLE_USER"));
+        user.addAuthority(new Authority("USER"));
 
         userRepository.save(user);
     }

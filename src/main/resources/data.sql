@@ -21,3 +21,6 @@ CREATE TABLE Authority (
     user_id BIGINT NOT NULL,         -- User 테이블 참조속성 (FK)
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
 );
+
+ALTER TABLE user
+    MODIFY COLUMN password VARCHAR(255) NOT NULL;

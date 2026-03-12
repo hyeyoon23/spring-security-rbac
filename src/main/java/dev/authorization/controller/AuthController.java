@@ -1,6 +1,7 @@
 package dev.authorization.controller;
 
 import dev.authorization.service.AuthService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,19 +21,21 @@ public class AuthController {
     @PostMapping("/signin")
     public String signup(@RequestParam String username,
                          @RequestParam String password,
-                         @RequestParam String position) {
+                         @RequestParam String position,
+                         @RequestParam String authority) {
 
-        authService.signup(username, password, position);
+        authService.signup(username, password, position, authority);
 
-        return "redirect:/mypage";
+        return "redirect:/login";
     }
 
     // 로그인
     @PostMapping("/login")
     public String login(@RequestParam String username,
-                        @RequestParam String password) {
+                        @RequestParam String password,
+                        HttpSession session) {
 
-        authService.login(username, password);
+        authService.login(username, password, session);
 
         return "redirect:/mypage";
     }

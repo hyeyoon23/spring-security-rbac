@@ -7,11 +7,12 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name = "Authority")
 public class Authority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     // 권한 (user / admin)
     private String authority;

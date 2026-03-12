@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<nav th:fragment="header" style="background-color: #343a40; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;">
+    <a href="/" style="color: white; font-size: 20px; font-weight: bold; text-decoration: none;">Spring Security RBAC</a>
+    <div>
+        <!-- 로그인 안 된 경우 -->
+        <span sec:authorize="!isAuthenticated()">
+            <a th:href="@{/login}" style="color: white; margin-right: 15px; text-decoration: none;">로그인</a>
+            <a th:href="@{/signin}" style="color: white; text-decoration: none;">회원가입</a>
+        </span>
+        <!-- 로그인 된 경우 -->
+        <span sec:authorize="isAuthenticated()">
+            <span style="color: white; margin-right: 15px;" sec:authentication="name">사용자</span>
+            <form th:action="@{/logout}" method="post" style="display: inline;">
+                <button type="submit" style="background: none; border: 1px solid white; color: white; padding: 5px 15px; cursor: pointer; border-radius: 4px;">로그아웃</button>
+            </form>
+        </span>
+    </div>
+</nav>
+</body>
+</html>

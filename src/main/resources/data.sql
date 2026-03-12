@@ -8,15 +8,16 @@ DROP TABLE IF EXISTS User;
 
 -- 3. User 테이블 생성
 CREATE TABLE User (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(50) NOT NULL,       -- 이름
-  position VARCHAR(50)             -- 직책
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,       -- 이름
+    password VARCHAR(50) NOT NULL,
+    position VARCHAR(50)             -- 직책
 );
 
 -- 4. Authority 테이블 생성
 CREATE TABLE Authority (
-   id BIGINT AUTO_INCREMENT PRIMARY KEY,
-   authority VARCHAR(50) NOT NULL,  -- 권한 (예: ROLE_USER, ROLE_ADMIN)
-   user_id BIGINT NOT NULL,         -- User 테이블 참조속성 (FK)
-   FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    authority VARCHAR(50) NOT NULL,  -- 권한 (예: ROLE_USER, ROLE_ADMIN)
+    user_id BIGINT NOT NULL,         -- User 테이블 참조속성 (FK)
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
 );
